@@ -57,7 +57,7 @@ Ball.prototype.collisionDetect = function() {
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance < this.size + balls[j].size) {
-        balls[j].color = this.color = 'rgb(' + random(255, 255) + ',' + random(255, 255) + ',' + random(255, 255) +')';
+        balls[j].color = this.color = 'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) +')';
       }
     }
   }
@@ -65,15 +65,15 @@ Ball.prototype.collisionDetect = function() {
 
 
 let balls = [];
-while (balls.length < 40) {
-  let size = random(1,1);
+while (balls.length < 300) {
+  let size = random(5,10);
   let ball = new Ball(
         // ball position always drawn at least one ball width
     // away from the edge of the canvas, to avoid drawing errors
     random(0 + size,width - size),
     random(0 + size,height - size),
-    random(-22, 40),
-    random(-2,4000),
+    random(-30, 30),
+    random(-30, 30),
     'rgb(' + random(255,255) + ',' + random(255,255) + ',' + random(255,255) +')',
     size
   );
@@ -81,7 +81,7 @@ while (balls.length < 40) {
 }
 
 function loop() {
-  ctx.fillStyle = 'rgba(0, 0, 0, .011)';
+  ctx.fillStyle = 'rgba(0, 0, 0, .1)';
   ctx.fillRect(0, 0, width, height);
 
   for (let i = 0; i < balls.length; i++) {
